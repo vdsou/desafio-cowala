@@ -21,13 +21,17 @@ function Infos() {
     if (info) setData(JSON.parse(info));
   }, []);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name: inputName, value } = event.target as typeof event.target & {
+    let { name: inputName, value } = event.target as typeof event.target & {
       name: { value: string };
       value: { value: string };
     };
+
     setData({
       ...data,
-      [inputName]: value,
+      [inputName]:
+        inputName === 'fone'
+          ? value.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3")
+          : value,
     });
   };
   const save = (event: FormEvent<HTMLFormElement>) => {
@@ -91,6 +95,7 @@ function Infos() {
               name="ip"
               value={data?.ip || ""}
               onChange={handleChange}
+              disabled
             />
           </label>
           <button type="button" onClick={() => handleFetch()}>
