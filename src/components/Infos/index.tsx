@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import axios from "axios";
 import "./styles.css";
 
@@ -16,29 +16,37 @@ function Infos() {
     ip: String(""),
   };
   const [data, setData] = useState<Partial<IData>>();
+  useEffect(() => {
+    const info = localStorage.getItem("info");
+    if (info) setData(JSON.parse(info));
+  }, []);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name: inputName, value } = event.target as typeof event.target & {
       name: { value: string };
       value: { value: string };
     };
-    console.log(inputName, value);
     setData({
       ...data,
-      [inputName]: event.target.value,
+      [inputName]: value,
     });
   };
+  const save = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    localStorage.setItem("info", JSON.stringify(data));
+  };
   const clear = () => {
+    localStorage.removeItem("info");
     setData(initialData);
   };
   const handleFetch = async () => {
     axios
       .get("https://ip-fast.com/api/ip/")
-      .then((res) => setData({ip: res.data}))
+      .then((res) => setData({ ...data, ip: res.data }))
       .catch((error) => console.log(error));
   };
   return (
     <main>
-      <form>
+      <form onSubmit={save}>
         <label htmlFor="name">
           Nome
           <input
