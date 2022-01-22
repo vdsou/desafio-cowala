@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
+import axios from "axios";
 import "./styles.css";
 
 interface IData {
@@ -16,11 +17,11 @@ function Infos() {
   };
   const [data, setData] = useState<Partial<IData>>();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name: inputName, value } =
-      event.target as typeof event.target & {
-        name: { value: string };
-        value: { value: string };
-      };
+    const { name: inputName, value } = event.target as typeof event.target & {
+      name: { value: string };
+      value: { value: string };
+    };
+    console.log(inputName, value);
     setData({
       ...data,
       [inputName]: event.target.value,
@@ -28,6 +29,12 @@ function Infos() {
   };
   const clear = () => {
     setData(initialData);
+  };
+  const handleFetch = async () => {
+    axios
+      .get("https://ip-fast.com/api/ip/")
+      .then((res) => setData({ip: res.data}))
+      .catch((error) => console.log(error));
   };
   return (
     <main>
@@ -78,7 +85,9 @@ function Infos() {
               onChange={handleChange}
             />
           </label>
-          <button type="button">ENCONTRAR IP</button>
+          <button type="button" onClick={() => handleFetch()}>
+            ENCONTRAR IP
+          </button>
         </div>
 
         <div className="buttons">
