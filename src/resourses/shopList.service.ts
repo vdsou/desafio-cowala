@@ -10,6 +10,12 @@ export default class ShopListService {
     return IShopList;
   }
 
+  update(id: string, price: number) {
+    const found = IShopList.map((item) => item.id).indexOf(id);
+    IShopList[found].price = price;
+    return IShopList;
+  }
+
   readAll() {
     return IShopList;
   }
@@ -21,8 +27,7 @@ export default class ShopListService {
 
   delete(id: string) {
     const found = IShopList.map((item) => item.id).indexOf(id);
-    IShopList.splice(found, 1)
+    IShopList.splice(found, 1);
     return IShopList;
   }
-
 }

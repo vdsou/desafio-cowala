@@ -10,6 +10,15 @@ export default class ShopListController {
     return res.status(201).json({ message: 'created successfully', list });
   }
 
+  async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const { price } = req.body;
+
+    const shopListService = new ShopListService();
+    const list = await shopListService.update(id, price);
+    return res.status(201).json({ message: 'created successfully', list });
+  }
+
   async readAll(req: Request, res: Response) {
     const shopListService = new ShopListService();
     const list = await shopListService.readAll();
