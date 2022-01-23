@@ -13,4 +13,9 @@ export default class ShopListService {
   readAll() {
     return IShopList;
   }
+
+  readOne(id: string) {
+    const result = IShopList.filter((item) => item.id === id);
+    return result;
+  }
 }

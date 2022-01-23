@@ -11,9 +11,15 @@ export default class ShopListController {
   }
 
   async readAll(req: Request, res: Response) {
-
     const shopListService = new ShopListService();
     const list = await shopListService.readAll();
-    return res.status(201).json({ list });
+    return res.status(200).json({ list });
+  }
+
+  async readOne(req: Request, res: Response) {
+    const { id } = req.params;
+    const shopListService = new ShopListService();
+    const result = await shopListService.readOne(id);
+    return res.status(200).json({ result });
   }
 }
