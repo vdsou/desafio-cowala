@@ -6,13 +6,13 @@ export default class ShopListService {
   create(data: IData) {
     const { item, price } = data;
 
-    IShopList.push({ id: generate.id(), item, price });
+    IShopList.push({ id: generate.id(), item, price: price.toFixed(2) });
     return IShopList;
   }
 
   update(id: string, price: number) {
     const found = IShopList.map((item) => item.id).indexOf(id);
-    IShopList[found].price = price;
+    IShopList[found].price = price.toFixed(2);
     return IShopList;
   }
 

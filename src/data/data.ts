@@ -1,7 +1,7 @@
 interface IShopList {
   id: string;
   item: string;
-  price: number;
+  price: string;
 }
 
 const ShopListDB: IShopList[] = [];
