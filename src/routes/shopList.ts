@@ -9,6 +9,6 @@ router.post('/create', shopListController.create);
 router.post('/update');
 router.get('/read-all', shopListController.readAll);
 router.get('/read-one/:id', shopListController.readOne);
-router.post('/delete');
+router.delete('/delete/:id', shopListController.delete);
 
 export default router;

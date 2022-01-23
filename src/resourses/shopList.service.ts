@@ -18,4 +18,11 @@ export default class ShopListService {
     const result = IShopList.filter((item) => item.id === id);
     return result;
   }
+
+  delete(id: string) {
+    const found = IShopList.map((item) => item.id).indexOf(id);
+    IShopList.splice(found, 1)
+    return IShopList;
+  }
+
 }

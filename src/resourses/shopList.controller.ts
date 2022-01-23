@@ -22,4 +22,12 @@ export default class ShopListController {
     const result = await shopListService.readOne(id);
     return res.status(200).json({ result });
   }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+    console.log('service', id);
+    const shopListService = new ShopListService();
+    const result = await shopListService.delete(id);
+    return res.status(200).json({ message: 'deleted successfully', result });
+  }
 }
