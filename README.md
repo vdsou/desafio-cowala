@@ -1,4 +1,4 @@
-#### Este repositório reune o conjunto de projetos realizados por mim para os Desafios Cowala.
+#### Este repositório reune o conjunto de projetos realizados por mim para os Desafios Cowala das vagas de Front e Back End.
 
 Encontra-se organizado por branches:
 
@@ -6,6 +6,6 @@ Encontra-se organizado por branches:
 
 - [Frontend](https://github.com/vdsou/desafio-cowala/tree/master-frontend)
 
-- [Backend Atividade 01](https://github.com/vdsou/desafio-cowala/tree/master-backend-1)
+- [Backend Exercício 01](https://github.com/vdsou/desafio-cowala/tree/master-backend-1)
 
-- [Backend Atividade 02](https://github.com/vdsou/desafio-cowala/tree/master-backend-2)
+- [Backend Exercício 02](https://github.com/vdsou/desafio-cowala/tree/master-backend-2)
